@@ -20,9 +20,9 @@ jobs:
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
 
             - name: Build and Push to Docker Hub
-              uses: docker/build-push-action@v7
+              uses: docker/build-push-action@v6
               with:
-                context: .
-                file: ./Dockerfile
                 push: true
-                tags: ${{ vars.DOCKERHUB_USERNAME }}/github-actions-app:latest
+                tags: |
+                    ${{ vars.DOCKERHUB_USERNAME }}/github-actions-app:${{ github.ref_name }}
+                    ${{ vars.DOCKERHUB_USERNAME }}/github-actions-app:latest
