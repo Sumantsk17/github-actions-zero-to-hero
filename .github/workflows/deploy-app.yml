@@ -1,0 +1,18 @@
+name: Deploy Flack App 
+
+on:
+    workflow_dispatch: 
+
+jobs:
+    deploy:
+        env:
+            DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
+        runs-on: self-hosted
+
+        steps:
+
+            - name: Checkout Code
+              uses: actions/checkout@v4
+              
+            - name: Deploy with docker compose
+              run: docker compose up -d --build
