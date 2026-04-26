@@ -1,7 +1,8 @@
 name: DevSecOps End to End CI/CD Pipeline
 
 on:
-    workflow_dispatch:  
+    push:
+        branches: [main]
 
 jobs:
     code-quality:
