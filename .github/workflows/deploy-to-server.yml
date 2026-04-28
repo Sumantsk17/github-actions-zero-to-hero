@@ -20,7 +20,7 @@ jobs:
                 key: ${{ secrets.EC2_SSH_KEY }}
                 script: |
                     echo "Starting Development"
-                    mkdir devops
+                    mkdir -p devops
                    
                     
 
