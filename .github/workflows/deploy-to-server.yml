@@ -49,7 +49,8 @@ jobs:
                     echo "Running App"
                     export DOCKERHUB_USERNAME=${{ vars.DOCKERHUB_USERNAME }}
                     export DOCKER_TAG=${{ github.event.workflow_run.head_sha }}
-                    export DOCKER_TAG=${{ env.DOCKER_TAG }}
+                    export DOCKER_TAG=$GITHUB_WORKFLOW_SHA
+                    echo ${{ github.sha }}
                     echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ vars.DOCKERHUB_USERNAME }} --password-stdin
                     cd ~/devops && docker compose down && docker compose up -d --build --force-recreate
                     
